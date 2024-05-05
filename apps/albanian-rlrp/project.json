@@ -20,7 +20,10 @@
           "apps/albanian-rlrp/src/favicon.ico",
           "apps/albanian-rlrp/src/assets"
         ],
-        "styles": ["apps/albanian-rlrp/src/styles.scss"],
+        "styles": [    "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+          "node_modules/primeng/resources/primeng.min.css",
+          "apps/albanian-rlrp/src/styles.scss"
+        ],
         "scripts": [],
         "server": "apps/albanian-rlrp/src/main.server.ts",
         "prerender": true,
