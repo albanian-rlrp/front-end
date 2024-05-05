@@ -1,0 +1,84 @@
+{
+  "name": "albanian-rlrp",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/albanian-rlrp/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/albanian-rlrp",
+        "index": "apps/albanian-rlrp/src/index.html",
+        "browser": "apps/albanian-rlrp/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/albanian-rlrp/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/albanian-rlrp/src/favicon.ico",
+          "apps/albanian-rlrp/src/assets"
+        ],
+        "styles": ["apps/albanian-rlrp/src/styles.scss"],
+        "scripts": [],
+        "server": "apps/albanian-rlrp/src/main.server.ts",
+        "prerender": true,
+        "ssr": {
+          "entry": "apps/albanian-rlrp/server.ts"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "albanian-rlrp:build:production"
+        },
+        "development": {
+          "buildTarget": "albanian-rlrp:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "albanian-rlrp:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/albanian-rlrp/jest.config.ts"
+      }
+    }
+  }
+}
